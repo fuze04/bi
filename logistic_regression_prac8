@@ -1,0 +1,28 @@
+install.packages("ISLR")
+data <- ISLR::Default
+install.packages("party")
+data <- ISLR::Default
+ summary(data)
+nrow(data)
+ set.seed(1)
+sample <- sample(c(TRUE, FALSE), nrow(data), replace=TRUE, prob=c(0.7,0.3))
+               train <- data[sample, ]
+               test <- data[!sample, ] 
+model <- glm(default~student+balance+income, family="binomial", data=train)
+options(scipen=999)
+summary(model)
+              pscl::pR2(model)["McFadden"]
+pscl::pR2(model)["McFadden"]
+install.packages("pscl")
+pscl::pR2(model)["McFadden"]
+             caret::varImp(model)
+install.packages("caret")
+ caret::varImp(model)
+car::vif(model)
+install.packages("car")
+car::vif(model)
+ new <- data.frame(balance = 1400, income = 2000, student = c("Yes", "No"))
+               predict(model, new, type="response")
+                   predicted <- predict(model, test, type="response")
+library(InformationValue)
+install.packages("InformationValue")
