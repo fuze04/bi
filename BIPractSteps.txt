@@ -1,0 +1,535 @@
+Practical-1
+Aim:Importing data from a csv file
+
+
+Step-1:Download the books data set from the http://www.kaggle.com.
+
+Step-2:Open power BI desktop and in the home ribben navigate to get-> click on text/csv to import the books data set from we downloaded. 
+
+Step-3:Navigate to books data set and open the folder->click on the ratings.csv(which has the ratings description) and click on the open.
+
+Step-4:One dialog box will  appear,click on load.
+
+Step-5:Navigate to the data tab and right click on ratings->select edit query to view the csv file.
+
+Step-6:We have successfully imported the ratings.csv file in power BI,similarity we can import the other 
+             csv files by following the same steps(step 1-5).
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-->>Importing data from ODATA feed
+
+
+Step-1:Open power BI desktop,in the home ribben navigate to get the data and from the drop down,select ODATA feed.
+
+Step-2:The following dialog box appears,paste the following URL:
+               http://services.odata.org/v3/northwind/northwind.svc/  and click ok.
+
+Step-3:In the navigator pane,select the following tables and click on load.
+
+Step-4:In the data tab,a list of imported  tables apperas. right click on any table and select edit query to view the table.
+
+Step-5:We have now successfully loaded the ODATA feed,in power BI.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-->Importing an excel workbook
+
+Step-1:Visit the following website:
+              http://www.kaggle.com/datasets/dermisfit/foodmart-dataset  and download the foodmart dataset.
+
+Step-2:Open power BI desktop in the home ribben navigate to get data and from the drop down, select excel workshop.
+
+Step-3:Navigate to the downloaded dataset and click open.
+
+Step-4:In the navigator pane select all the existing tables in the storesdata file and click on load.
+
+Step-5:In the data tab navigate to storesdata table and right click to select edit query as shown below. 
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+PRACTICAL- 2
+
+Aim- Perform the Extraction Transformation and Loading (ETC) process to construct the database in the sql server.
+
+
+Step-1:Get the data from the northwind services
+
+Step-2:After get data -->select the tables -->oracles -->orders,products --> click on the transform data.
+
+Step-3:Remove the other columns to only display columns oif interest(we have only kept  following columns of product_id, productname,QtyPerUnit, Unitstock ).
+
+
+Step-4:change the datatype of units in stock column to whole numbers--> click on the unitstock in product table-->right click-->select whole    numbers.
+
+Step-5: expand the order details table(In order table select order_details columns and choose all columns of an order_details table) click on order           
+               table-->click on ok.
+
+Step-6:calculate  the line  total for each order_details row(create line total as a new custom column with formula as order_details unit price+order_deatils qty).
+click on Add column from top select->custom column->dialog box opens->name column->lin total->from available column select column  (order details.unit price _orderdetails.quantity)
+
+Step-7: Rename and reorder columns in the query ,shift line total column after shipcountry-->Now right click-->select rename-->rename(stock 
+              value)-->for reorder-->Just drag to or near shipcountry.
+
+Step-8: click on home.
+
+Step-9: close and apply-->You will come to power BI Desktop.
+
+Step-10: on the left side,click on data.
+
+Step-11:Click on manage relation.
+
+Step-12:Click on model left side.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+PRACTICAL-3A
+
+AIM:Create a data staging area for the selected database.
+
+
+Step-1:On power BI desktop-->left side-->click on data-->chart.
+
+Step-2:Click on file-->options and settings-->options-->select security-->check the select box of map and filled map visuals-->OK.
+
+Step-3:From fields-->Drag product name & unitstock-->select chart of visuals.
+
+Step-4:On X-axis select product name -->Y-axis select sum of unistock.
+
+Step-5:Drag the order date and stockValue.
+
+Step-6:Select line chart-->X-axis-->count of Stockvalue.
+
+Step-7:Drag shipcountry.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+PRACTICAL-3B
+
+AIM:Relational OLAP (ROLAP)-Online Analytical Processing.
+
+
+Step-1:Click on connect-->click on (dialogue) window authentication.
+
+Step-2:Right click-->database connected-->properties-->security-->SQL server-->login (failed login only) select that.
+
+Step-3:Expand security -->logins-->3a-->Right click-->properties-->set password whatever you want-->status must be enabled.
+
+Step-4:Right click-->restart service (means right click on database.
+
+Step-5:link(http://www.codeproject.com | articles | 652108 | create-first-data-warehouse).
+
+Step-6:Open the downloaded script file-->open file-->path and open (the script will open)-->execute the script(refresh database).
+
+Step-7:Start visual studio as an administrator cfreate new project-->analysis services multi dimentional project type.
+
+Step-8:Create new data source from solution explorer-->data source-->new data source-->new-->server name-->(authenticatiopn SQL server),
+             check connection-->Inherit-->sales_dw-->finish data source view-->next-->fact table-->new-->cube-->use exe-->Fact products-->next-->
+             finish.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+PRACTICAL-4   
+
+AIM:Implementation of classification algorithm in R programming.
+
+
+COMMANDS:
+
+# Get the data points in form of a R vector.
+rainfall <-
+c(799,1174.8,865.1,1334.6,635.4,918.5,685.5,998.6,784.2,985,882.8,1071)
+# Convert it to a time series object.
+rainfall.timeseries <- ts(rainfall,start = c(2012,1),frequency = 12)
+# Print the timeseries data.
+print(rainfall.timeseries)
+# Give the chart file a name.
+png(file = "rainfall.png")
+# Plot a graph of the time series.
+plot(rainfall.timeseries)
+# Save the file.
+dev.off()
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+PRACTICAL-5
+
+AIM:K-means clustering
+
+
+CODE:
+
+#apply K mean to iris and store result
+>newiris <- iris
+>newiris$Species <- NULL
+>(kc <- kmeans(newiris,3))
+
+click enter and after this,compare the species lable with clustering result
+
+>#compare the species lable with clustering result
+>table (iris$Species,kc$cluster)
+
+click enter and plot the clusters and their centers
+
+>plot the clusters and their centers
+>plot(newiris[c("Sepal.Length","Sepal.Width")],col=kc$cluster)
+>points(kc$centers[,c("Sepal.Length", "Sepal.Width")],col=1:3,pch=8,cex=2)
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+PRACTICAL-6
+
+AIM:Practical implementation of Decision Table using R tool.
+
+
+CODE:
+
+
+Input Data
+
+install.packages("party")
+
+# Load the party package. It will automatically load other
+# dependent packages.
+library(party)
+# Print some records from data set readingSkills.
+print(head(readingSkills))
+
+
+When we execute the above code, it produces the following result and chart −
+
+
+nativeSpeaker      age    shoeSize    score
+1                     yes     5      24.83189     32.29385
+2                     yes     6      25.95238     36.63105
+3                     no      11     30.42170     49.60593
+4                     yes     7      28.66450     40.28456
+5                     yes    11     31.88207     55.46085
+6                     yes    10     30.07843     52.83124
+Loading required package: methods
+Loading required package: grid
+...............................
+...............................
+
+
+We will use the ctree() function to create the decision tree and see its graph.
+
+
+# Load the party package. It will automatically load other
+# dependent packages.
+library(party)
+# Create the input data frame.
+input.dat <- readingSkills[c(1:105),]
+# Give the chart file a name.
+png(file = "decision_tree.png")
+# Create the tree.
+output.tree <- ctree(
+nativeSpeaker ~ age + shoeSize + score,data = input.dat)
+# Plot the tree.
+plot(output.tree)
+# Save the file.
+dev.off()
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+PRACTICAL-7
+
+AIM:Prediction using linear regression
+
+CODE:
+
+Input Data
+
+Below is the sample data representing the observations −
+
+# Values of height
+151, 174, 138, 186, 128, 136, 179, 163, 152, 131
+# Values of weight.
+63, 81, 56, 91, 47, 57, 76, 72, 62, 48
+
+
+Create Relationship Model & get the Coefficients-
+
+
+x <- c(151, 174, 138, 186, 128, 136, 179, 163, 152, 131)
+y <- c(63, 81, 56, 91, 47, 57, 76, 72, 62, 48)
+# Apply the lm() function.
+relation <- lm(y~x)
+print(relation)
+
+When we execute the above code, it produces the following result –
+
+Call:
+lm(formula = y ~ x)
+
+Coefficients:
+(Intercept) x
+-38.4551 0.6746
+
+Get the Summary of the Relationship-->
+
+x <- c(151, 174, 138, 186, 128, 136, 179, 163, 152, 131)
+y <- c(63, 81, 56, 91, 47, 57, 76, 72, 62, 48)
+
+# Apply the lm() function.
+relation <- lm(y~x)
+
+print(summary(relation))
+
+
+When we execute the above code, it produces the following result –->
+
+call:
+lm(formula = y ~ x)
+
+Residuals:
+Min 1Q Median 3Q Max
+-6.3002 -1.6629 0.0412 1.8944 3.9775
+
+Coefficients:
+Estimate Std. Error t value Pr(>|t|)
+(Intercept) -38.45509 8.04901 -4.778 0.00139 **
+x 0.67461 0.05191 12.997 1.16e-06 ***
+---
+Signif. codes: 0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Residual standard error: 3.253 on 8 degrees of freedom
+Multiple R-squared: 0.9548, Adjusted R-squared: 0.9491
+F-statistic: 168.9 on 1 and 8 DF, p-value: 1.164e-06
+-----------
+
+
+
+
+
+Predict the weight of new persons-->
+
+
+# The predictor vector.
+x <- c(151, 174, 138, 186, 128, 136, 179, 163, 152, 131)
+# The resposne vector.
+y <- c(63, 81, 56, 91, 47, 57, 76, 72, 62, 48)
+# Apply the lm() function.
+relation <- lm(y~x)
+# Find weight of a person with height 170.
+a <- data.frame(x = 170)
+result <- predict(relation,a)
+print(result)
+
+
+Result:
+1
+76.22869
+
+
+Visualize the Regression Graphically-->
+
+
+# Create the predictor and response variable.
+x <- c(151, 174, 138, 186, 128, 136, 179, 163, 152, 131)
+y <- c(63, 81, 56, 91, 47, 57, 76, 72, 62, 48)
+relation <- lm(y~x)
+# Give the chart file a name.
+png(file = "linearregression.png")
+# Plot the chart.
+plot(y,x,col = "blue",main = "Height & Weight Regression",abline(lm(x~y)),cex = 1.3,pch = 16,xlab = "Weight in Kg",ylab = "Height incm")
+# Save the file.
+dev.off()
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+PRACTICAL-8
+
+AIM:Perform logistic regression in R
+
+Step-1:Load the Data.
+
+             Code:
+
+install.packages("ISLR")
+
+
+              #load dataset
+              data <- ISLR::Default
+
+                #view summary of dataset
+              summary(data)
+
+
+
+             Output:
+ 
+                default    student       balance           income     
+                No :9667   No :7056   Min.   :   0.0   Min.   :  772  
+                Yes: 333   Yes:2944   1st Qu.: 481.7   1st Qu.:21340  
+                           Median : 823.6   Median :34553  
+                           Mean   : 835.4   Mean   :33517  
+                           3rd Qu.:1166.3   3rd Qu.:43808  
+                           Max.   :2654.3   Max.   :73554  
+
+
+After that write below commands-->
+
+              #find total observations in dataset
+              nrow(data)
+
+                [1] 10000
+
+
+Step-2:Create training and test samples.
+             
+              Code:
+
+              #make this example reproducible
+               set.seed(1)
+
+                 #Use 70% of dataset as training set and remaining 30% as testing set
+               sample <- sample(c(TRUE, FALSE), nrow(data), replace=TRUE, prob=c(0.7,0.3))
+               train <- data[sample, ]
+               test <- data[!sample, ]  
+
+
+Step-3:Fit the logistic regression model.
+
+ Code:
+
+#fit logistic regression model
+model <- glm(default~student+balance+income, family="binomial", data=train)
+
+#disable scientific notation for model summary
+options(scipen=999)
+
+#view model summary
+summary(model)
+
+
+
+Output:
+
+Call:
+glm(formula = default ~ student + balance + income, family = "binomial", 
+    data = train)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-2.5586  -0.1353  -0.0519  -0.0177   3.7973  
+
+Coefficients:
+                 Estimate    Std. Error z value            Pr(>|z|)    
+(Intercept) -11.478101194   0.623409555 -18.412 <0.0000000000000002 ***
+studentYes   -0.493292438   0.285735949  -1.726              0.0843 .  
+balance       0.005988059   0.000293765  20.384 <0.0000000000000002 ***
+income        0.000007857   0.000009965   0.788              0.4304    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 2021.1  on 6963  degrees of freedom
+Residual deviance: 1065.4  on 6960  degrees of freedom
+AIC: 1073.4
+
+Number of Fisher Scoring iterations: 8
+
+
+
+
+Step-4:It includes following sub-steps:
+             a)Assessing model fits-
+                
+              Code:
+install.packages("McFadden")
+
+              pscl::pR2(model)["McFadden"]
+              McFadden 
+              0.4728807 
+
+
+             b)Variable Importance-
+
+             Code:
+install.packages("caret")
+ caret::varImp(model)
+
+
+                Output:
+
+                                          Overall
+             studentYes      1.726393
+             balance              20.383812
+             income               0.788449
+
+
+             c)VIF Value
+
+              Code:
+
+                 #calculate VIF values for each predictor variable in our model
+              car::vif(model)
+
+                 Output:
+
+                student  balance   income 
+              2.754926 1.073785 2.694039
+
+
+
+Step-5:Use the model to make prediction.
+
+               Code:
+
+                #define two individuals
+ new <- data.frame(balance = 1400, income = 2000, student = c("Yes", "No"))
+
+                #predict probability of defaulting
+               predict(model, new, type="response")
+
+                Output:
+
+                                   1          2 
+                    0.02732106 0.04397747
+
+ To calculate probability of default for each individual in test dataset:
+
+     #calculate probability of default for each individual in test dataset
+                   predicted <- predict(model, test, type="response")
+
+Step-6:Model Diagnostics.(Optional)
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
